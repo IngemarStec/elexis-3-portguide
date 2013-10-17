@@ -48,10 +48,12 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.jdom.Element;
 
-import ch.elexis.Desk;
-import ch.elexis.Hub;
-import ch.elexis.text.ITextPlugin.ICallback;
-import ch.elexis.util.SWTHelper;
+import ch.elexis.core.data.activator.CoreHub;
+import ch.elexis.core.ui.Hub;
+import ch.elexis.core.ui.UiDesk;
+import ch.elexis.core.ui.icons.Images;
+import ch.elexis.core.ui.text.ITextPlugin.ICallback;
+import ch.elexis.core.ui.util.SWTHelper;
 import ch.medelexis.templator.model.IProcessor;
 import ch.medelexis.templator.model.ProcessingSchema;
 
@@ -76,7 +78,7 @@ public class ProcessingSchemaDisplay extends Composite {
 			setLayoutData(SWTHelper.getFillGridData(1, true, 1, true));
 		}
 		setLayout(new FillLayout());
-		form = Desk.getToolkit().createScrolledForm(this);
+		form = UiDesk.getToolkit().createScrolledForm(this);
 		saveHandler = handler;
 		Composite body = form.getBody();
 		body.setLayout(new GridLayout());
@@ -100,7 +102,7 @@ public class ProcessingSchemaDisplay extends Composite {
 			@Override
 			public void widgetSelected(SelectionEvent e){
 				FileDialog fd = new FileDialog(getShell(), SWT.OPEN);
-				fd.setFilterPath(Hub.localCfg.get(Preferences.PREF_TEMPLATEBASE,
+				fd.setFilterPath(CoreHub.localCfg.get(Preferences.PREF_TEMPLATEBASE,
 					System.getProperty("user.home")));
 				String fname = fd.open();
 				if (fname != null) {
@@ -126,7 +128,7 @@ public class ProcessingSchemaDisplay extends Composite {
 	private void makeActions(){
 		printAction = new Action("Ausgeben") {
 			{
-				setImageDescriptor(Desk.getImageDescriptor(Desk.IMG_PRINTER));
+				setImageDescriptor(Images.IMG_PRINTER.getImageDescriptor());
 				setToolTipText("Gibt dieses Dokument mit dem konfigurierten Ausgabeprogramm aus");
 			}
 			
@@ -145,7 +147,7 @@ public class ProcessingSchemaDisplay extends Composite {
 		};
 		addAction = new Action("Variable hinzufügen") {
 			{
-				setImageDescriptor(Desk.getImageDescriptor(Desk.IMG_ADDITEM));
+				setImageDescriptor(Images.IMG_ADDITEM.getImageDescriptor());
 				setToolTipText("Ein neues Name-Wert-Paar hinzufügen");
 			}
 			
@@ -176,7 +178,7 @@ public class ProcessingSchemaDisplay extends Composite {
 		directOutputAction = new Action("Sofort ausgeben", Action.AS_CHECK_BOX) {
 			{
 				setToolTipText("Beim Drucken direkt zum Ausgabeprozessor senden");
-				setImageDescriptor(Desk.getImageDescriptor(Desk.IMG_NEXT));
+				setImageDescriptor(Images.IMG_NEXT.getImageDescriptor());
 			}
 			
 			@Override

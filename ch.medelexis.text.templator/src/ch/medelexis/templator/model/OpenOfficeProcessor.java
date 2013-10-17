@@ -19,9 +19,10 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-import ch.elexis.Hub;
-import ch.elexis.actions.ElexisEventDispatcher;
-import ch.elexis.util.SWTHelper;
+import ch.elexis.core.data.activator.CoreHub;
+import ch.elexis.core.data.events.ElexisEventDispatcher;
+import ch.elexis.core.ui.Hub;
+import ch.elexis.core.ui.util.SWTHelper;
 import ch.medelexis.templator.ui.OOOProcessorPrefs;
 import ch.rgw.io.FileTool;
 import ch.rgw.tools.ExHandler;
@@ -67,8 +68,8 @@ public class OpenOfficeProcessor implements IProcessor {
 			zos.close();
 			zis.close();
 			String cmd =
-				Hub.localCfg.get(OOOProcessorPrefs.PREFERENCE_BRANCH + "cmd", "swriter.exe");
-			String param = Hub.localCfg.get(OOOProcessorPrefs.PREFERENCE_BRANCH + "param", "%");
+				CoreHub.localCfg.get(OOOProcessorPrefs.PREFERENCE_BRANCH + "cmd", "swriter.exe");
+			String param = CoreHub.localCfg.get(OOOProcessorPrefs.PREFERENCE_BRANCH + "param", "%");
 			int i = param.indexOf('%');
 			if (i != -1) {
 				param = param.substring(0, i) + output.getAbsolutePath() + param.substring(i + 1);

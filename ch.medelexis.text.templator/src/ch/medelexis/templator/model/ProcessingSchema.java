@@ -31,7 +31,8 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-import ch.elexis.Hub;
+import ch.elexis.core.data.activator.CoreHub;
+import ch.elexis.core.ui.Hub;
 import ch.medelexis.templator.ui.Preferences;
 import ch.rgw.tools.ExHandler;
 
@@ -130,7 +131,7 @@ public class ProcessingSchema extends Document {
 	}
 	
 	public File getTemplateFile(){
-		File basedir = new File(Hub.localCfg.get(Preferences.PREF_TEMPLATEBASE, ""));
+		File basedir = new File(CoreHub.localCfg.get(Preferences.PREF_TEMPLATEBASE, ""));
 		String name = doc.getRootElement().getAttributeValue("template");
 		File ret = name == null ? null : new File(basedir, name);
 		return ret;

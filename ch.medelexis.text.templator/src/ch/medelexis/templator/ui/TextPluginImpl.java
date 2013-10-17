@@ -24,9 +24,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 
-import ch.elexis.text.ITextPlugin;
-import ch.elexis.text.ReplaceCallback;
-import ch.elexis.util.SWTHelper;
+import ch.elexis.core.data.interfaces.text.ReplaceCallback;
+import ch.elexis.core.ui.text.ITextPlugin;
+import ch.elexis.core.ui.util.SWTHelper;
 import ch.medelexis.templator.model.ProcessingSchema;
 import ch.rgw.tools.ExHandler;
 

@@ -19,9 +19,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import ch.elexis.Hub;
-import ch.elexis.preferences.SettingsPreferenceStore;
-import ch.elexis.util.SWTHelper;
+import ch.elexis.core.data.activator.CoreHub;
+import ch.elexis.core.ui.Hub;
+import ch.elexis.core.ui.preferences.SettingsPreferenceStore;
+import ch.elexis.core.ui.util.SWTHelper;
 
 public class OOOProcessorPrefs extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage {
@@ -31,7 +32,7 @@ public class OOOProcessorPrefs extends FieldEditorPreferencePage implements
 	
 	public OOOProcessorPrefs(){
 		super(GRID);
-		store = new SettingsPreferenceStore(Hub.localCfg);
+		store = new SettingsPreferenceStore(CoreHub.localCfg);
 		setPreferenceStore(store);
 	}
 	
@@ -54,7 +55,7 @@ public class OOOProcessorPrefs extends FieldEditorPreferencePage implements
 	
 	@Override
 	protected void performApply(){
-		Hub.localCfg.flush();
+		CoreHub.localCfg.flush();
 	}
 	
 }

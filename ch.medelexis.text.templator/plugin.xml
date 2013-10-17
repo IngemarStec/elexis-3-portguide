@@ -3,7 +3,7 @@
 <plugin>
    <extension-point id="Textprocessor" name="%Textprozessor" schema="schema/Textprocessor.exsd"/>
    <extension
-         point="ch.elexis.Text">
+         point="ch.elexis.core.ui.Text">
       <Texterweiterung
             Klasse="ch.medelexis.templator.ui.TextPluginImpl"
             name="Medelexis Templator">
